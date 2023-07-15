@@ -121,13 +121,13 @@ class Client:
 
             Outputs track id (str)
         """
+        # //////////////////////////////////////////
+        # formatted_data = json.dumps(data.json(), indent=4)
+
+        # with open("sample.json", "w") as outfile:
+        # outfile.write(formatted_data)
+        # //////////////////////////////////////////
         data = self.search(track, "track")
-
-        formatted_data = json.dumps(data.json(), indent=4)
-
-        with open("sample.json", "w") as outfile:
-            outfile.write(formatted_data)
-
         search_data = data.json()
 
         for track in search_data["tracks"]["items"]:
