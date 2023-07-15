@@ -8,8 +8,14 @@
   <form method="post">
     <label for="title">Title</label>
     <input name="title" id="title" value="{{ request.form['title'] }}" required>
-    <label for="body">Body</label>
-    <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
+    <label for="artist">Artist</label>
+    <input name="artist" id="artist" value="{{ request.form['artist'] }}" required>
+    <label for="genres">Genres</label>
+    <input name="genres" id="genres" value="{{ request.form['genres'] }}" required>
+    <label for="track">Track</label>
+    <input name="track" id="track" value="{{ request.form['track'] }}" required>
+    <!--<label for="body">Body</label>
+    <textarea name="body" id="body">{{ request.form['body'] }}</textarea>-->
     <input type="submit" value="Save">
   </form>
 {% endblock %}

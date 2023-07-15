@@ -11,7 +11,7 @@ bp = Blueprint("logs", __name__)
 def index():
     db = get_db()
     posts = db.execute(
-        "SELECT p.id, title, body, created, author_id, username"
+        "SELECT p.id, title, artist, genres, track, created, author_id, username"
         " FROM post p JOIN user u ON p.author_id = u.id"
         " ORDER BY created DESC"
     ).fetchall()
@@ -24,19 +24,28 @@ def index():
 def create():
     if request.method == "POST":
         title = request.form["title"]
-        body = request.form["body"]
+        artist = request.form["artist"]
+        genres = request.form["genres"]
+        track = request.form["track"]
         error = None
 
-        if not title:
-            error = "Title is required."
+        if not artist:
+            error = "Artist is required."
+
+        if not genres:
+            error = "Genre(s) are required."
+
+        if not track:
+            error = "Track is required."
 
         if error is not None:
             flash(error)
         else:
             db = get_db()
             db.execute(
-                "INSERT INTO post (title, body, author_id)" " VALUES (?, ?, ?)",
-                (title, body, g.user["id"]),
+                "INSERT INTO post (title, artist, genres, track, author_id)"
+                " VALUES (?, ?, ?, ?, ?)",
+                (title, artist, genres, track, g.user["id"]),
             )
             db.commit()
             return redirect(url_for("logs.index"))
@@ -48,7 +57,7 @@ def get_post(id, check_author=True):
     post = (
         get_db()
         .execute(
-            "SELECT p.id, title, body, created, author_id, username"
+            "SELECT p.id, title, artist, genres, track, created, author_id, username"
             " FROM post p JOIN user u ON p.author_id = u.id"
             " WHERE p.id = ?",
             (id,),
@@ -72,18 +81,28 @@ def update(id):
 
     if request.method == "POST":
         title = request.form["title"]
-        body = request.form["body"]
+        # artist = request.form["artist"]
+        # genres = request.form["genres"]
+        # track = request.form["track"]
         error = None
 
+        # if not artist:
         if not title:
             error = "Title is required."
+
+        # if not genres:
+        # error = "Genre(s) are required."
+
+        # if not track:
+        # error = "Track is required."
 
         if error is not None:
             flash(error)
         else:
             db = get_db()
             db.execute(
-                "UPDATE post SET title = ?, body = ?" " WHERE id = ?", (title, body, id)
+                "UPDATE post SET title = ?" " WHERE id = ?",
+                (title, id),
             )
             db.commit()
             return redirect(url_for("logs.index"))
