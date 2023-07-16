@@ -1,5 +1,5 @@
 ferry/__pycache__/
 
 ferry/client/__pycache__/
-ferry/instance/
+ferry/instance/ferry.sqlite
 
