@@ -230,9 +230,12 @@ class Client:
             break
 
 
-client = Client()
-data = client.recommendations_search("Deafheaven", "Blackgaze, Shoegaze", "Dream House")
+if __name__ == "__main__":
+    client = Client()
+
+# client = Client()
+# data = client.recommendations_search("Deafheaven", "Blackgaze, Shoegaze", "Dream House")
 # data = client._get_track_id("soul protector")
-client.get_recommendations(data)
+# client.get_recommendations(data)
 # data = client.cover_search("soul protector", "track")
 # client.get_cover(data)

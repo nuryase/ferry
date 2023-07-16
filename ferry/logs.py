@@ -3,6 +3,7 @@ from werkzeug.exceptions import abort
 
 from ferry.auth import login_required
 from ferry.db import get_db
+from client_recommendations import *
 
 bp = Blueprint("logs", __name__)
 
@@ -27,6 +28,11 @@ def create():
         artist = request.form["artist"]
         genres = request.form["genres"]
         track = request.form["track"]
+
+        client = Client()
+        data = client.recommendations_search(artist, genres, track)
+        client.get_recommendations(data)
+
         error = None
 
         if not artist:
