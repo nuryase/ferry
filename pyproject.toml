@@ -1,0 +1,13 @@
+[project]
+name = "ferry"
+version = "1.0.0"
+description = "A blog app for sharing and fetching song recommendations using Spotify API."
+dependencies = [
+    "flask",
+    "requests",
+    "urllib3",
+]
+
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"
