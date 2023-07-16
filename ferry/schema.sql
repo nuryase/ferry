@@ -15,5 +15,6 @@ CREATE TABLE post (
   artist TEXT NOT NULL,
   genres TEXT NOT NULL,
   track TEXT NOT NULL,
+  recommendations TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)
 );

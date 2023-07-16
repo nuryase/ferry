@@ -3,7 +3,7 @@ from werkzeug.exceptions import abort
 
 from ferry.auth import login_required
 from ferry.db import get_db
-from client_recommendations import *
+from ferry.client.client_recommendations import *
 
 bp = Blueprint("logs", __name__)
 
@@ -12,7 +12,7 @@ bp = Blueprint("logs", __name__)
 def index():
     db = get_db()
     posts = db.execute(
-        "SELECT p.id, title, artist, genres, track, created, author_id, username"
+        "SELECT p.id, title, artist, genres, track, recommendations, created, author_id, username"
         " FROM post p JOIN user u ON p.author_id = u.id"
         " ORDER BY created DESC"
     ).fetchall()
@@ -31,7 +31,9 @@ def create():
 
         client = Client()
         data = client.recommendations_search(artist, genres, track)
-        client.get_recommendations(data)
+        recommendations = client.get_recommendations(data)
+
+        print(recommendations)
 
         error = None
 
@@ -49,9 +51,9 @@ def create():
         else:
             db = get_db()
             db.execute(
-                "INSERT INTO post (title, artist, genres, track, author_id)"
-                " VALUES (?, ?, ?, ?, ?)",
-                (title, artist, genres, track, g.user["id"]),
+                "INSERT INTO post (title, artist, genres, track, recommendations, author_id)"
+                " VALUES (?, ?, ?, ?, ?, ?)",
+                (title, artist, genres, track, recommendations, g.user["id"]),
             )
             db.commit()
             return redirect(url_for("logs.index"))
@@ -63,7 +65,7 @@ def get_post(id, check_author=True):
     post = (
         get_db()
         .execute(
-            "SELECT p.id, title, artist, genres, track, created, author_id, username"
+            "SELECT p.id, title, artist, genres, track, recommendations, created, author_id, username"
             " FROM post p JOIN user u ON p.author_id = u.id"
             " WHERE p.id = ?",
             (id,),

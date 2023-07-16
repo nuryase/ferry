@@ -185,22 +185,26 @@ class Client:
 
         # Start here
         search_data = data.json()
+        recommendations = ""
 
-        print("")
+        # print("")
         for i in range(10):
             for d in search_data["tracks"][i]["album"]["artists"]:
-                print("Artist:", d["name"])
-                print("Song:", search_data["tracks"][i]["name"])
+                # print("Artist:", d["name"])
+                recommendations += "Artist: " + d["name"] + "\n"
+                # print("Song:", search_data["tracks"][i]["name"])
+                recommendations += "Song: " + search_data["tracks"][i]["name"] + "\n"
                 # Get Image
-                image_data = self.search(search_data["tracks"][i]["name"], "track")
-                self.get_cover(image_data)
+                # image_data = self.search(search_data["tracks"][i]["name"], "track")
+                # self.get_cover(image_data)
 
                 for _ in d["external_urls"]["spotify"]:
                     pass
 
-                print("Profile Link:", d["external_urls"]["spotify"])
-                print("")
-        return
+                recommendations += "\n"
+                # print("Profile Link:", d["external_urls"]["spotify"])
+                # print("")
+        return recommendations
 
     def get_cover(self, data) -> None:
         """
@@ -214,6 +218,7 @@ class Client:
 
             Outputs track cover art in three size formats.
         """
+
         search_data = data.json()
 
         for track in search_data["tracks"]["items"]:
@@ -229,9 +234,6 @@ class Client:
             print("")
             break
 
-
-if __name__ == "__main__":
-    client = Client()
 
 # client = Client()
 # data = client.recommendations_search("Deafheaven", "Blackgaze, Shoegaze", "Dream House")

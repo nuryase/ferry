@@ -22,11 +22,16 @@
           <a class="action" href="{{ url_for('logs.update', id=post['id']) }}">Edit</a>
           {% endif %}
         </header>
-        <p class="body">Artist: {{ post['artist'] }} 
+        <p class="body">Request:
+          
+        Artist: {{ post['artist'] }} 
 
         Genres: {{ post['genres'] }} 
 
         Track: {{ post['track'] }}</p>
+        <p class="body">Recommendations:
+
+        {{ post['recommendations'] }}</p>
       </article>
       {% if not loop.last %}
         <hr>
