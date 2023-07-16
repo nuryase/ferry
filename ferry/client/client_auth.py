@@ -1,4 +1,4 @@
-from client_credentials import get_client_id, get_client_secret
+from ferry.client.client_credentials import get_client_id, get_client_secret
 
 import base64
 import json

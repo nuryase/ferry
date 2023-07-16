@@ -3,7 +3,7 @@ from werkzeug.exceptions import abort
 
 from ferry.auth import login_required
 from ferry.db import get_db
-from ferry.client.client_recommendations import *
+from ferry.client import *
 
 bp = Blueprint("logs", __name__)
 
