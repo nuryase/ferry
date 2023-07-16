@@ -207,33 +207,33 @@ class Client:
                 # print("")
         return recommendations
 
-    def get_cover(self, data) -> None:
-        """
-        Obtains track cover art.
+    # def get_cover(self, data) -> None:
+    # """
+    # Obtains track cover art.
 
-        Parameters:
+    # Parameters:
 
-            data - track data (JSON)
+    #    data - track data (JSON)
 
-        Returns:
+    # Returns:
 
-            Outputs track cover art in three size formats.
-        """
+    #    Outputs track cover art in three size formats.
+    # """
 
-        search_data = data.json()
+    # search_data = data.json()
 
-        for track in search_data["tracks"]["items"]:
-            print("")
-            print("Image URL: {}".format(track["name"]))
+    # for track in search_data["tracks"]["items"]:
+    #    print("")
+    #    print("Image URL: {}".format(track["name"]))
 
-            for image in track["album"]["images"]:
-                cover_url = image["url"]
+    #    for image in track["album"]["images"]:
+    #        cover_url = image["url"]
 
-                # print("")
-                print(cover_url)
+    #        # print("")
+    #        print(cover_url)
 
-            print("")
-            break
+    #    print("")
+    #    break
 
 
 # client = Client()

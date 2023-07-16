@@ -21,9 +21,9 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    @app.route("/senna")
-    def senna():
-        return "Hello, Senna!"
+    @app.route("/yasen")
+    def yasen():
+        return "Yasen."
 
     db.init_app(app)
     app.register_blueprint(auth.bp)

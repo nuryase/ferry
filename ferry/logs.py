@@ -33,18 +33,20 @@ def create():
         data = client.recommendations_search(artist, genres, track)
         recommendations = client.get_recommendations(data)
 
-        print(recommendations)
+        # print(recommendations)
 
         error = None
 
+        if not title:
+            error = "Title is required."
         if not artist:
-            error = "Artist is required."
+            error = "Artist(s) are required."
 
         if not genres:
             error = "Genre(s) are required."
 
         if not track:
-            error = "Track is required."
+            error = "Track(s) are required."
 
         if error is not None:
             flash(error)
