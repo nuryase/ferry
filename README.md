@@ -51,3 +51,6 @@ A total of 10 tracks will appear, with the artist name preceeding the track name
 
 ## Misc
 List of genres: [spotify-genres.md](https://gist.github.com/andytlr/4104c667a62d8145aa3a)
+
+## Future
+The current application is quite bland and basic. The recommendations feature also isn't implemented well. Features and improvements to the app will be added overtime. 
