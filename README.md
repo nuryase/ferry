@@ -38,7 +38,7 @@ When making a log, ```title``` refers to the post title.
 
 ```track``` refers to the name of the track you want to recieve recommendations for.
 
-The user can have a total of 5 inputs from artist, genres, and track combined.
+The user can make a total of 5 inputs from artist, genres, and track combined. (Comma delimited)
 
 e.g. ```artist: Deafheaven | genres: blackgaze, shoegaze | track: Dream House```
 
