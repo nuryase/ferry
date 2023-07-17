@@ -1,5 +1,5 @@
 # Ferry
-A blog-styled app for sharing and recieveing song recommendations using Spotify API.
+A blog-styled app for sharing and receiving song recommendations using Spotify API.
 
 ## Usage
 Clone the repository.
