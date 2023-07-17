@@ -27,9 +27,15 @@ Run the app.
 $ flask --app ferry run
 ``````
 
+# Recommendations
+Recommendations can be made while posting.
+
 When making a log, ```title``` refers to the post title.
+
 ```artist``` refers to the name of the artist you want to recieve recommendations for. 
+
 ```genres``` refers to the genres you want the recommendations to focus on.
+
 ```track``` refers to the name of the track you want to recieve recommendations for.
 
 The user can have a total of 5 inputs from artist, genres, and track combined.
