@@ -7,7 +7,7 @@ Clone the repository.
 $ git clone git@github.com:yasenne/ferry.git
 ``````
 
-Move into ```ferry``` directory and create a virtual environment.
+Move into the ```ferry``` directory and create a virtual environment.
 
 ``````
 $ cd ferry
