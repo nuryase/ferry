@@ -49,7 +49,6 @@ class Client:
         query = urlencode(params)
 
         url = f"{self._base_url}{endpoint}?{query}"
-        # print(url)
 
         data = requests.get(url, headers=headers)
 
@@ -122,12 +121,6 @@ class Client:
 
             Outputs track id (str)
         """
-        # //////////////////////////////////////////
-        # formatted_data = json.dumps(data.json(), indent=4)
-
-        # with open("sample.json", "w") as outfile:
-        # outfile.write(formatted_data)
-        # //////////////////////////////////////////
         data = self.search(track, "track")
         search_data = data.json()
 
@@ -152,7 +145,6 @@ class Client:
             Outputs recommendation metadata.
         """
         limit = 10
-
         seed_artist = self._get_artist_id(artist)
         seed_track = self._get_track_id(track)
         data = self._api_get_recommendations(
@@ -177,68 +169,18 @@ class Client:
         Returns:
             Outputs recommended artist, track, artist profile link, and track cover art.
         """
-        # //////////////////////////////////////////
-        # formatted_data = json.dumps(data.json(), indent=4)
-
-        # with open("sample.json", "w") as outfile:
-        # outfile.write(formatted_data)
-        # //////////////////////////////////////////
-
-        # Start here
         search_data = data.json()
         recommendations = ""
 
-        # print("")
         for i in range(10):
             for d in search_data["tracks"][i]["album"]["artists"]:
-                # print("Artist:", d["name"])
                 recommendations += "Artist: " + d["name"] + "\n"
-                # print("Song:", search_data["tracks"][i]["name"])
+
                 recommendations += "Song: " + search_data["tracks"][i]["name"] + "\n"
-                # Get Image
-                # image_data = self.search(search_data["tracks"][i]["name"], "track")
-                # self.get_cover(image_data)
 
                 for _ in d["external_urls"]["spotify"]:
                     pass
 
                 recommendations += "\n"
-                # print("Profile Link:", d["external_urls"]["spotify"])
-                # print("")
+
         return recommendations
-
-    # def get_cover(self, data) -> None:
-    # """
-    # Obtains track cover art.
-
-    # Parameters:
-
-    #    data - track data (JSON)
-
-    # Returns:
-
-    #    Outputs track cover art in three size formats.
-    # """
-
-    # search_data = data.json()
-
-    # for track in search_data["tracks"]["items"]:
-    #    print("")
-    #    print("Image URL: {}".format(track["name"]))
-
-    #    for image in track["album"]["images"]:
-    #        cover_url = image["url"]
-
-    #        # print("")
-    #        print(cover_url)
-
-    #    print("")
-    #    break
-
-
-# client = Client()
-# data = client.recommendations_search("Deafheaven", "Blackgaze, Shoegaze", "Dream House")
-# data = client._get_track_id("soul protector")
-# client.get_recommendations(data)
-# data = client.cover_search("soul protector", "track")
-# client.get_cover(data)

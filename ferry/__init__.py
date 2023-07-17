@@ -23,6 +23,9 @@ def create_app(test_config=None):
 
     @app.route("/yasen")
     def yasen():
+        """
+        Test URL.
+        """
         return "Yasen."
 
     db.init_app(app)
